@@ -70,6 +70,7 @@ namespace cs221util {
   }
 
   RGBAPixel * PNG::getPixel(unsigned int x, unsigned int y) {
+    // cout << "first line";
     if (width_ == 0 || height_ == 0) {
       cerr << "ERROR: Call to cs221util::PNG::getPixel() made on an image with no pixels." << endl;
       cerr << "     : Returning NULL." << endl;

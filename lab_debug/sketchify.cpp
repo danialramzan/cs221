@@ -52,12 +52,12 @@ void sketchify(std::string inputFile, std::string outputFile) {
     // Load in.png
     PNG* original = new PNG();
 
-    cout << "Reached line 54" << endl;
+    //cout << "Reached line 54" << endl;
     original->readFromFile(inputFile);
-    cout << "Reached line 57" << endl;
+    //cout << "Reached line 57" << endl;
     unsigned width = original->width();
     unsigned height = original->height();
-    cout << "Reached line 59" << endl;
+    //cout << "Reached line 59" << endl;
 
     // Create out.png
     PNG* output = setupOutput(width, height);
@@ -67,8 +67,8 @@ void sketchify(std::string inputFile, std::string outputFile) {
 
     // Go over the whole image, and if a pixel is likely to be an edge,
     // color it my favorite color in the output
-    for (unsigned y = 1; y < height; y++) {
-        for (unsigned x = 1; x < width; x++) {
+    for (unsigned y = 1; y < height - 1; y++) {
+        for (unsigned x = 1; x < width - 1; x++) {
 
             // calculate how "edge-like" a pixel is
             double score = edgeScore(original, x, y);
