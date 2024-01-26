@@ -15,10 +15,12 @@ PNG* setupOutput(unsigned w, unsigned h) {
 }
 
 // Returns my favorite color
+
 RGBAPixel* myFavoriteColor(int blueval) {
-    RGBAPixel pixel(64, 191, blueval);
-    return &pixel;
+    RGBAPixel* pixel = new RGBAPixel(64, 191, blueval);
+    return pixel;
 }
+
 
 // Returns a score determining if the pixel is an edge
 // requires 1 <= x < width - 1; 1 <= y < height - 1
@@ -42,8 +44,7 @@ double edgeScore(PNG* im, unsigned x, unsigned y) {
                 score -= hsla.l;
             }
         }
-    }
-
+    } 
     return score;
 
 }
@@ -77,7 +78,7 @@ void sketchify(std::string inputFile, std::string outputFile) {
             // If the pixel is an edge pixel,
             // color the output pixel with my favorite color
             if (score > 0.3) {
-                currOutPixel = myPixel;
+                *currOutPixel = *myPixel;
             }
         }
     }
